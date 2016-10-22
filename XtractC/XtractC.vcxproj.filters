@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="BuildEvent">
+      <UniqueIdentifier>{a4590da0-bd2a-4fbc-860a-e07e5b532723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FiniteStateMachine">
+      <UniqueIdentifier>{99060d3c-f5c6-41ea-a500-486f2cfa1fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Transition">
+      <UniqueIdentifier>{f0748e09-95a9-4af9-88b1-952fa4fd5700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FiniteStateMachine">
+      <UniqueIdentifier>{0b705d8d-97df-4ec9-a478-770291bd2c20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Transition">
+      <UniqueIdentifier>{53fa6c9e-8683-4189-89d9-a295143af765}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XtractC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FSMCppCommentExtraction.h">
+      <Filter>Header Files\FiniteStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="FSMFileStatistics.h">
+      <Filter>Header Files\FiniteStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionBackToComment.h">
+      <Filter>Header Files\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionExitingCppStyle.h">
+      <Filter>Header Files\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionExitingCStyle.h">
+      <Filter>Header Files\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionInComment.h">
+      <Filter>Header Files\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionNewComment.h">
+      <Filter>Header Files\Transition</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="XtractC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMCppCommentExtraction.cpp">
+      <Filter>Source Files\FiniteStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMFileStatistics.cpp">
+      <Filter>Source Files\FiniteStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionBackToComment.cpp">
+      <Filter>Source Files\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionExitingCppStyle.cpp">
+      <Filter>Source Files\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionExitingCStyle.cpp">
+      <Filter>Source Files\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionInComment.cpp">
+      <Filter>Source Files\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionNewComment.cpp">
+      <Filter>Source Files\Transition</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tools\PostBuildEventDebug.bat">
+      <Filter>BuildEvent</Filter>
+    </None>
+    <None Include="tools\PostBuildEventRelease.bat">
+      <Filter>BuildEvent</Filter>
+    </None>
+  </ItemGroup>
+</Project>
