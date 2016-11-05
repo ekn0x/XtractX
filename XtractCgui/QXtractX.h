@@ -6,6 +6,7 @@
 class QSplitter;
 class QDirectorySelector;
 class QTabWidget;
+class QCppCommentViewer;
 
 class QXtractX : public QWidget
 {
@@ -16,9 +17,11 @@ public:
 	~QXtractX();
 
 private:
-	QSplitter * splitter;
-	QDirectorySelector * dirSelect;
-	QTabWidget * xtractViews;
+	QSplitter * mSplitter;
+	QDirectorySelector * mDirSelect;
+	QTabWidget * mXtractViews;
+
+	QCppCommentViewer * mCommentViewer;
 };
 
 #endif // QXTRACTX_H

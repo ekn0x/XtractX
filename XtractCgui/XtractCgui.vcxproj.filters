@@ -177,9 +177,6 @@
     <ClInclude Include="GeneratedFiles\ui_XtractCgui.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="QXtractXTabViews.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="tools\PostBuildEventDebug.bat">

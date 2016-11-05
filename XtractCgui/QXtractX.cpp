@@ -15,19 +15,25 @@ QXtractX::QXtractX(QWidget * parent)
 {
 	setWindowIcon(QIcon(":/XtractCgui/Icon"));
 
-	splitter = new QSplitter;
-	dirSelect = new QDirectorySelector;
-	xtractViews = new QTabWidget;
-	
-	xtractViews->addTab(new QCppCommentViewer, "View comments");
-	//xtractViews->addTab();
-	xtractViews->addTab(new QSupplement, "Suppléments");
+	mSplitter = new QSplitter;
+	mDirSelect = new QDirectorySelector;
+	mXtractViews = new QTabWidget;
 
-	splitter->addWidget(dirSelect);
-	splitter->addWidget(xtractViews);
+	// set acceptable extension
+	mCommentViewer = new QCppCommentViewer;
+	mCommentViewer->setFileSuffixFilter({ "c", "h", "cpp", "hpp" });
+	
+	mXtractViews->addTab(mCommentViewer, "View comments");
+	//xtractViews->addTab();
+	mXtractViews->addTab(new QSupplement, "Suppléments");
+
+	connect(mDirSelect, &QDirectorySelector::fileSelected, mCommentViewer, &QCppCommentViewer::setFile);
+
+	mSplitter->addWidget(mDirSelect);
+	mSplitter->addWidget(mXtractViews);
 
 	QGridLayout * layout = new QGridLayout;
-	layout->addWidget(splitter);
+	layout->addWidget(mSplitter);
 
 	setLayout(layout);
 }
