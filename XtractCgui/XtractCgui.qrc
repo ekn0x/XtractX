@@ -1,4 +1,5 @@
 <RCC>
     <qresource prefix="XtractCgui">
+      <file alias="Icon">Icon.svg</file>
     </qresource>
 </RCC>
