@@ -1,6 +1,7 @@
 #include "QXtractX.h"
 
 #include "QDirectorySelector.h"
+#include "QMultipleFile.h"
 #include "QCppCommentViewer.h"
 #include "QSupplement.h"
 
@@ -13,18 +14,19 @@
 
 QXtractX::QXtractX(QWidget * parent)
 {
-	setWindowIcon(QIcon(":/XtractCgui/Icon"));
-
 	mSplitter = new QSplitter;
 	mDirSelect = new QDirectorySelector;
 	mXtractViews = new QTabWidget;
 
-	// set acceptable extension
+	// set view and acceptable extensions for one file
 	mCommentViewer = new QCppCommentViewer;
 	mCommentViewer->setFileSuffixFilter({ "c", "h", "cpp", "hpp" });
+
+	mMultipleFile = new QMultipleFile(mDirSelect);
+
 	
-	mXtractViews->addTab(mCommentViewer, "View comments");
-	//xtractViews->addTab();
+	mXtractViews->addTab(mCommentViewer, "Consulter un fichier source et ses commentaires");
+	mXtractViews->addTab(mMultipleFile, "Generer des fichiers de commentaires");
 	mXtractViews->addTab(new QSupplement, "Suppléments");
 
 	connect(mDirSelect, &QDirectorySelector::fileSelected, mCommentViewer, &QCppCommentViewer::setFile);
@@ -37,8 +39,3 @@ QXtractX::QXtractX(QWidget * parent)
 
 	setLayout(layout);
 }
-
-QXtractX::~QXtractX()
-{
-
-}	

@@ -10,8 +10,3 @@ XtractCgui::XtractCgui(QWidget *parent)
 
 	setCentralWidget(new QXtractX());
 }
-
-XtractCgui::~XtractCgui()
-{
-
-}

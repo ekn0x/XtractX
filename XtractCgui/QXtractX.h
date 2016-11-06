@@ -4,9 +4,12 @@
 #include <QWidget>
 
 class QSplitter;
-class QDirectorySelector;
 class QTabWidget;
+
+class QDirectorySelector;
 class QCppCommentViewer;
+class QMultipleFile;
+
 
 class QXtractX : public QWidget
 {
@@ -14,14 +17,15 @@ class QXtractX : public QWidget
 
 public:
 	QXtractX(QWidget * parent = nullptr);
-	~QXtractX();
+	~QXtractX() = default;
 
 private:
 	QSplitter * mSplitter;
-	QDirectorySelector * mDirSelect;
 	QTabWidget * mXtractViews;
 
+	QDirectorySelector * mDirSelect;
 	QCppCommentViewer * mCommentViewer;
+	QMultipleFile * mMultipleFile;
 };
 
 #endif // QXTRACTX_H

@@ -10,7 +10,7 @@ class XtractCgui : public QMainWindow
 
 public:
 	XtractCgui(QWidget *parent = 0);
-	~XtractCgui();
+	~XtractCgui() = default;
 
 private:
 	Ui::XtractCguiClass ui;

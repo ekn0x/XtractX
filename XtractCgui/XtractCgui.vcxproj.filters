@@ -36,6 +36,24 @@
     <Filter Include="BuildEvent">
       <UniqueIdentifier>{885a670a-ce02-4045-a571-734167b62a49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\OneFile">
+      <UniqueIdentifier>{e45e5929-ae4d-4051-8a30-81ad875f13ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Supplement">
+      <UniqueIdentifier>{1bb4d65d-6300-4fa8-9fc8-f362f8e94e30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MultipleFiles">
+      <UniqueIdentifier>{58ddde15-b150-4286-b464-491dd736223e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MultipleFiles">
+      <UniqueIdentifier>{33a91df0-4f03-4d42-b829-f63714b3338d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OneFile">
+      <UniqueIdentifier>{795198f5-1840-4a91-854c-8bef6194c822}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Supplement">
+      <UniqueIdentifier>{18779f74-8fa0-4452-b4ca-9c09c2a203cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,17 +71,11 @@
     <ClCompile Include="GeneratedFiles\qrc_XtractCgui.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="QCppCommentViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QCppCommentViewer.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QCppCommentViewer.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="QCppEditor.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QCppEditor.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -71,17 +83,11 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QCppEditor.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="QCppSyntaxHighlighter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QCppSyntaxHighlighter.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QCppSyntaxHighlighter.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="QCustomHeaderFileSystemModel.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QCustomHeaderFileSystemModel.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -98,26 +104,17 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QDirectorySelector.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="QLineTextEdit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QLineTextEdit.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QLineTextEdit.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="QSelectedFileList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QSelectedFileList.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QSelectedFileList.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="QSupplement.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="QXtractX.cpp">
       <Filter>Source Files</Filter>
@@ -134,6 +131,54 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QXtractX.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QMultipleFile.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QMultipleFile.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QOptions.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QOptions.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QDossier.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QDossier.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="QCppCommentViewer.cpp">
+      <Filter>Source Files\OneFile</Filter>
+    </ClCompile>
+    <ClCompile Include="QSupplement.cpp">
+      <Filter>Source Files\Supplement</Filter>
+    </ClCompile>
+    <ClCompile Include="QDossier.cpp">
+      <Filter>Source Files\MultipleFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="QMultipleFile.cpp">
+      <Filter>Source Files\MultipleFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="QCppEditor.cpp">
+      <Filter>Source Files\OneFile</Filter>
+    </ClCompile>
+    <ClCompile Include="QCppSyntaxHighlighter.cpp">
+      <Filter>Source Files\OneFile</Filter>
+    </ClCompile>
+    <ClCompile Include="QCustomHeaderFileSystemModel.cpp">
+      <Filter>Source Files\OneFile</Filter>
+    </ClCompile>
+    <ClCompile Include="QLineTextEdit.cpp">
+      <Filter>Source Files\OneFile</Filter>
+    </ClCompile>
+    <ClCompile Include="QSelectedFileList.cpp">
+      <Filter>Source Files\MultipleFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="QOptions.cpp">
+      <Filter>Source Files\MultipleFiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="XtractCgui.h">
@@ -145,32 +190,41 @@
     <CustomBuild Include="XtractCgui.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QCppCommentViewer.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QCppEditor.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QCppSyntaxHighlighter.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QCustomHeaderFileSystemModel.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="QDirectorySelector.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QLineTextEdit.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QSelectedFileList.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QSupplement.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QXtractX.h">
       <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QOptions.h">
+      <Filter>Header Files\MultipleFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QDossier.h">
+      <Filter>Header Files\MultipleFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QCppCommentViewer.h">
+      <Filter>Header Files\OneFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QCppSyntaxHighlighter.h">
+      <Filter>Header Files\OneFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QCustomHeaderFileSystemModel.h">
+      <Filter>Header Files\OneFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QCppEditor.h">
+      <Filter>Header Files\OneFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QMultipleFile.h">
+      <Filter>Header Files\MultipleFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QLineTextEdit.h">
+      <Filter>Header Files\OneFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSelectedFileList.h">
+      <Filter>Header Files\MultipleFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSupplement.h">
+      <Filter>Header Files\Supplement</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
