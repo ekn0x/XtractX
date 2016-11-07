@@ -7,4 +7,4 @@ echo Copying debug library files ...
 echo.
 
 copy "..\x64\Debug\XtractCgui.exe" "..\bin\XtractCgui_x64d.exe"
-copy "..\x64\Debug\XtractCgui.pdb" "..\bin\XtractCgui_x64d.pdb"
+rem copy "..\x64\Debug\XtractCgui.pdb" "..\bin\XtractCgui_x64d.pdb"

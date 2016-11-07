@@ -2,6 +2,7 @@
 #define QOPTIONS_H
 
 #include <QWidget>
+#include "qlabel.h"
 
 class QGroupBox;
 class QPushButton;
@@ -31,6 +32,10 @@ private:
 	QGroupBox * buildExtBox();
 	QHBoxLayout * buildOptFooter();
 
+	//mFolderOpt
+	QString mOptPath;
+	QLabel * mPath;
+
 	// layout elements
 	bool sourceFolder = true;
 	QPushButton * mSelectFolder;
@@ -40,7 +45,8 @@ private:
 
 public slots:
 	void enableCustomOutputFolder();
-
+	void disableCustomOutputFolder();
+	void setOptCustom();
 	void PB_Generer();
 
 };

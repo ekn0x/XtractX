@@ -54,6 +54,7 @@ private:
 	QPushButton * mRemoveSelectedFile;
 	QPushButton * mRemoveAllFile;
 
+
 	void updateSelectedFileCounter();
 	void updateGui();
 	//void addFile(QString const & fileName);

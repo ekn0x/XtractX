@@ -15,6 +15,8 @@
 #include <QLineEdit>
 #include <QSpinBox>
 #include <QMessageBox>
+#include <QFileDialog>
+#include "qdir.h"
 
 #include <sstream>
 
@@ -52,20 +54,20 @@ QGroupBox* QOptions::buildFolderBox()
 	QLabel * selectedFolder = new QLabel(QString("Specifier un repertoire de sortie"));
 	selectedFolder->setFixedWidth(200);
 	mSelectFolder = new QPushButton(QString("Selectionner"));
+	mSelectFolder->setEnabled(false);
 	QHBoxLayout * line2 = new QHBoxLayout;
 	line2->addWidget(select);
 	line2->addWidget(selectedFolder);
 	line2->addStretch();
 	line2->addWidget(mSelectFolder);
 
-	QLineEdit * path = new QLineEdit;
-	path->setReadOnly(true);
+	mPath = new QLabel;
 
 	// constuire le layout
 	QVBoxLayout * subLayout = new QVBoxLayout;
 	subLayout->addLayout(line1, 0);
 	subLayout->addLayout(line2, 1);
-	subLayout->addWidget(path);
+	subLayout->addWidget(mPath);
 	subLayout->addStretch();
 
 	mFolderOpt->setLayout(subLayout);
@@ -73,6 +75,8 @@ QGroupBox* QOptions::buildFolderBox()
 	// Connections
 	// gray out button when repertoire is selected
 	connect(select, &QRadioButton::clicked, this, &QOptions::enableCustomOutputFolder);
+	connect(source, &QRadioButton::clicked, this, &QOptions::disableCustomOutputFolder);
+	connect(mSelectFolder, &QPushButton::clicked, this, &QOptions::setOptCustom);
 
 
 	return mFolderOpt;
@@ -230,9 +234,42 @@ void QOptions::genererOutputFiles()
 
 // slots
 
+void QOptions::disableCustomOutputFolder()
+{
+	sourceFolder = true; 
+	
+	mOptPath = "";
+	mPath->setText(mOptPath);
+	mPath->setEnabled(false);
+
+	mSelectFolder->setEnabled(false);
+
+
+}
+
+void QOptions::setOptCustom()
+{
+	QFileDialog dirSelect;
+	int result;
+	
+	dirSelect.setFileMode(QFileDialog::Directory);
+	dirSelect.setOption(QFileDialog::ShowDirsOnly);
+
+	result = dirSelect.exec();
+
+	if (result)
+	{
+		mOptPath = dirSelect.selectedFiles()[0];
+		mPath->setText(mOptPath);
+		mPath->setEnabled(true);
+	}
+}
+
+
 void QOptions::enableCustomOutputFolder()
 {
-	mSelectFolder->setFlat(!mSelectFolder->isFlat());
+	sourceFolder = false;
+	mSelectFolder->setEnabled(true);
 }
 
 void QOptions::PB_Generer()
