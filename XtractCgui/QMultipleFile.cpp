@@ -14,7 +14,7 @@ QMultipleFile::QMultipleFile(QDirectorySelector * const & dirSelector, QWidget *
 	mFileList = new QSelectedFileList(dirSelector);
 	mFileList->setFileSuffixFilter({ "c", "h", "cpp", "hpp" });
 
-	mOptions = new QOptions();
+	mOptions = new QOptions(this);
 
 	mSplitter->addWidget(mFileList);
 	mSplitter->addWidget(mOptions);
@@ -23,4 +23,14 @@ QMultipleFile::QMultipleFile(QDirectorySelector * const & dirSelector, QWidget *
 	layout->addWidget(mSplitter);
 
 	setLayout(layout);
+}
+
+QStringList QMultipleFile::getFileList()
+{
+	return mFileList->selectedFiles();
+}
+
+int QMultipleFile::selectedFilesCount()
+{
+	return mFileList->selectedFilesCount();
 }

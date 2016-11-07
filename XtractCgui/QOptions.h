@@ -20,6 +20,8 @@ public:
 	~QOptions() = default;
 
 private:
+	QWidget * qParent;
+
 	QGroupBox * mFolderOpt;
 	QGroupBox * mFileOpt;
 	QGroupBox * mExtOpt;
@@ -30,10 +32,16 @@ private:
 	QHBoxLayout * buildOptFooter();
 
 	// layout elements
+	bool sourceFolder = true;
 	QPushButton * mSelectFolder;
 
+	// generer function
+	void genererOutputFiles();
+
 public slots:
-	void grayOut();
+	void enableCustomOutputFolder();
+
+	void PB_Generer();
 
 };
 

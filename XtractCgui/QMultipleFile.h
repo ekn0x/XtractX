@@ -16,11 +16,16 @@ public:
 	QMultipleFile(QDirectorySelector * const & dirSelector, QWidget *parent = 0);
 	~QMultipleFile() = default;
 
+	// fonction permettant d'appeller de l'exterieure des informations de mFileList
+	QStringList getFileList();
+	int selectedFilesCount();
+
 private:
 	QSplitter * mSplitter;
 	
 	QSelectedFileList * mFileList;
 	QOptions * mOptions;
+
 };
 
 

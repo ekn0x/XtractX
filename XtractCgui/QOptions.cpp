@@ -1,4 +1,6 @@
+#include "XtractC.h"
 #include "QOptions.h"
+#include "QMultipleFile.h"
 //#include "QDossier.h"
 
 #include <QGridLayout>
@@ -12,8 +14,12 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QSpinBox>
+#include <QMessageBox>
+
+#include <sstream>
 
 QOptions::QOptions(QWidget * parent)
+	: qParent{parent}
 {
 	QVBoxLayout * layout = new QVBoxLayout;
 	
@@ -45,12 +51,12 @@ QGroupBox* QOptions::buildFolderBox()
 	QRadioButton * select = new QRadioButton; // choisir le dossier de sortie
 	QLabel * selectedFolder = new QLabel(QString("Specifier un repertoire de sortie"));
 	selectedFolder->setFixedWidth(200);
-	QPushButton * selectFolder = new QPushButton(QString("Selectionner"));
+	mSelectFolder = new QPushButton(QString("Selectionner"));
 	QHBoxLayout * line2 = new QHBoxLayout;
 	line2->addWidget(select);
 	line2->addWidget(selectedFolder);
 	line2->addStretch();
-	line2->addWidget(selectFolder);
+	line2->addWidget(mSelectFolder);
 
 	QLineEdit * path = new QLineEdit;
 	path->setReadOnly(true);
@@ -66,6 +72,7 @@ QGroupBox* QOptions::buildFolderBox()
 
 	// Connections
 	// gray out button when repertoire is selected
+	connect(select, &QRadioButton::clicked, this, &QOptions::enableCustomOutputFolder);
 
 
 	return mFolderOpt;
@@ -150,7 +157,6 @@ QGroupBox* QOptions::buildExtBox()
 	line2->addStretch();
 	line2->addWidget(extension);
 
-	
 	// constuire le layout
 	QVBoxLayout * subLayout = new QVBoxLayout;
 	subLayout->addLayout(line1, 0);
@@ -166,17 +172,71 @@ QHBoxLayout * QOptions::buildOptFooter()
 {
 	QCheckBox * statistique = new QCheckBox;
 	QLabel * labelStatistique = new QLabel("Inclure les statistiques");
+	QPushButton * generer = new QPushButton(QString("Generer"));
 
 	QHBoxLayout * subLayout = new QHBoxLayout;
 	subLayout->addStretch();
 	subLayout->addWidget(statistique);
 	subLayout->addWidget(labelStatistique);
-	subLayout->addWidget(new QPushButton(QString("Generer")));
+	subLayout->addWidget(generer);
+	
+	connect(generer, &QPushButton::released, this, &QOptions::PB_Generer);
 
 	return subLayout;
 }
 
-void QOptions::grayOut()
+// Functions
+void QOptions::genererOutputFiles()
 {
-	mSelectFolder->setCheckable(false);
+	QMultipleFile* owner = dynamic_cast<QMultipleFile*>(qParent);
+	int fileCount = owner->selectedFilesCount();
+	if (fileCount > 0)
+	{
+		// 1) Obtenir la liste des fichiers
+		QStringList fileList = static_cast<QMultipleFile*>(qParent)->getFileList();
+
+		// 2) Obtenir la liste des options de sortie
+		
+		// 3) 
+		for (auto it = fileList.begin(); it != fileList.end(); ++it)
+		{
+			XtractC extracteur;
+
+			QMessageBox::information(this, QString("Active File"), *it);
+			try 
+			{
+				std::stringstream strStreamIn((*it).toStdString());
+				std::stringstream strStreamOut("G:/test.XtractC");
+				extracteur.setup(strStreamIn, strStreamOut);
+				if(!extracteur.process(true))
+					QMessageBox::information(this, QString("Active File"), QString("L'operation n'a pas fonctionner"));
+
+			}
+			catch (XtractC::ParamException const & exception)
+			{
+				QMessageBox::information(this, QString("Active File"), QString("XtractC exception caught : ") + QString::fromStdString(exception.what()));
+			}
+			catch (XtractC::Exception const & exception) {
+				QMessageBox::information(this, QString("Active File"), QString("XtractC exception caught : ") + QString::fromStdString(exception.what()));
+			}
+			catch (exception const & exception) {
+				QMessageBox::information(this, QString("Active File"), QString("XtractC exception caught : ") + QString::fromStdString(exception.what()));
+			}
+		}
+	}
+	else
+		QMessageBox::information(this, QString("Liste de fichier vide"), QString("Aucun fichier dans la liste"));
 }
+
+// slots
+
+void QOptions::enableCustomOutputFolder()
+{
+	mSelectFolder->setFlat(!mSelectFolder->isFlat());
+}
+
+void QOptions::PB_Generer()
+{
+	genererOutputFiles();
+}
+
