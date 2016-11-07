@@ -88,40 +88,42 @@ QGroupBox* QOptions::buildFileBox()
 	mFileOpt->setTitle(QString("Options fichier de sortie"));
 
 	// source output folder
-	QRadioButton * fileName = new QRadioButton;
-	fileName->setChecked(true); // option par defaut
+	QRadioButton * origFileName = new QRadioButton;
+	origFileName->setChecked(true); // option par defaut
 	QLabel * srcFileName = new QLabel(QString("Utiliser le meme nom de fichier"));
 	srcFileName->setFixedWidth(200);
 	QHBoxLayout * line1 = new QHBoxLayout;
-	line1->addWidget(fileName);
+	line1->addWidget(origFileName);
 	line1->addWidget(srcFileName);
 	line1->addStretch();
 
-	QRadioButton * select = new QRadioButton; // choisir le dossier de sortie
-	QLabel * selectedFolder = new QLabel(QString("Utiliser un nom de fichier avec numerotation automatique"));
-	selectedFolder->setFixedWidth(300);
+	QRadioButton * select = new QRadioButton; // choisir le nom de sortie
+	QLabel * selectedFileName = new QLabel(QString("Utiliser un nom de fichier avec numerotation automatique"));
+	selectedFileName->setFixedWidth(300);
 	QHBoxLayout * line2 = new QHBoxLayout;
 	line2->addWidget(select);
-	line2->addWidget(selectedFolder);
+	line2->addWidget(selectedFileName);
 	line2->addStretch();
 
 	QLabel * labelPrefix = new QLabel(QString("Prefixe du nom de fichier"));
 	labelPrefix->setFixedWidth(200);
-	QLineEdit * prefix = new QLineEdit;
-	prefix->setFixedWidth(200);
+	mPrefix = new QLineEdit;
+	mPrefix->setEnabled(false);
+	mPrefix->setFixedWidth(200);
 	QHBoxLayout * line3 = new QHBoxLayout;
 	line3->addWidget(labelPrefix);
 	line3->addStretch();
-	line3->addWidget(prefix);
+	line3->addWidget(mPrefix);
 
 	QLabel * labelNumero = new QLabel(QString("Debuter la numerotation a"));
 	labelNumero->setFixedWidth(200);
-	QSpinBox * numero = new QSpinBox;
-	numero->setFixedWidth(200);
+	mNumero = new QSpinBox;
+	mNumero->setEnabled(false);
+	mNumero->setFixedWidth(200);
 	QHBoxLayout * line4 = new QHBoxLayout;
 	line4->addWidget(labelNumero);
 	line4->addStretch();
-	line4->addWidget(numero);
+	line4->addWidget(mNumero);
 
 	// constuire le layout
 	QVBoxLayout * subLayout = new QVBoxLayout;
@@ -132,6 +134,9 @@ QGroupBox* QOptions::buildFileBox()
 	subLayout->addStretch();
 
 	mFileOpt->setLayout(subLayout);
+
+	connect(select, &QRadioButton::clicked, this, &QOptions::enableCustomOptName);
+	connect(origFileName, &QRadioButton::clicked, this, &QOptions::disableCustomOptName);
 
 	return mFileOpt;
 }
@@ -276,4 +281,20 @@ void QOptions::PB_Generer()
 {
 	genererOutputFiles();
 }
+
+void QOptions::enableCustomOptName()
+{
+	mOriginalName = false;
+	mPrefix->setEnabled(true);
+	mNumero->setEnabled(true);
+}
+
+void QOptions::disableCustomOptName()
+{
+	mOriginalName = true;
+	mPrefix->setEnabled(false);
+	mNumero->setEnabled(false);
+}
+
+
 
