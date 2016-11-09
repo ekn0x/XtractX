@@ -153,12 +153,13 @@ QGroupBox* QOptions::buildExtBox()
 	QRadioButton * extCustom = new QRadioButton;
 	extCustom->setText("Specifier l'extension");
 	extCustom->setFixedWidth(200);
-	QLineEdit * extension = new QLineEdit;
-	extension->setFixedWidth(200);
+	mExtension = new QLineEdit;
+	mExtension->setFixedWidth(200);
+	mExtension->setEnabled(false);
 	QHBoxLayout * line2 = new QHBoxLayout;
 	line2->addWidget(extCustom);
 	line2->addStretch();
-	line2->addWidget(extension);
+	line2->addWidget(mExtension);
 
 	// constuire le layout
 	QVBoxLayout * subLayout = new QVBoxLayout;
@@ -167,6 +168,9 @@ QGroupBox* QOptions::buildExtBox()
 	subLayout->addStretch();
 
 	mExtOpt->setLayout(subLayout);
+
+	connect(extXtractC, &QRadioButton::clicked, this, &QOptions::disableCustomExt);
+	connect(extCustom, &QRadioButton::clicked, this, &QOptions::enableCustomExt);
 
 	return mExtOpt;
 }
@@ -286,6 +290,18 @@ void QOptions::disableCustomOptName()
 	mOriginalName = true;
 	mPrefix->setEnabled(false);
 	mNumero->setEnabled(false);
+}
+
+void QOptions::enableCustomExt()
+{
+	mOriginalExt = false;
+	mExtension->setEnabled(true);
+}
+
+void QOptions::disableCustomExt()
+{
+	mOriginalExt = true;
+	mExtension->setEnabled(false);
 }
 
 

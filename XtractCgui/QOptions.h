@@ -45,6 +45,9 @@ private:
 	QLineEdit * mPrefix;
 	QSpinBox * mNumero;
 
+	//Extension Output
+	bool mOriginalExt = true;
+	QLineEdit * mExtension;
 	// generer function
 	void genererOutputFiles();
 
@@ -54,6 +57,8 @@ public slots:
 	void enableCustomOptName();
 	void disableCustomOptName();
 	void setOptCustom();
+	void enableCustomExt();
+	void disableCustomExt();
 	void PB_Generer();
 
 };
