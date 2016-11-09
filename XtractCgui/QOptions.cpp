@@ -194,25 +194,24 @@ void QOptions::genererOutputFiles()
 	int fileCount = owner->selectedFilesCount();
 	if (fileCount > 0)
 	{
+		XtractC extracteur;
 		// 1) Obtenir la liste des fichiers
 		QStringList fileList = static_cast<QMultipleFile*>(qParent)->getFileList();
 
-		// 2) Obtenir la liste des options de sortie
-		
-		// 3) 
+
 		for (auto it = fileList.begin(); it != fileList.end(); ++it)
 		{
-			XtractC extracteur;
+			// 2) Obtenir la liste des options de sortie
 
+			// 3)  Lancer la machine
 			QMessageBox::information(this, QString("Active File"), *it);
-			try 
+			try
 			{
-				std::stringstream strStreamIn((*it).toStdString());
-				std::stringstream strStreamOut("G:/test.XtractC");
-				extracteur.setup(strStreamIn, strStreamOut);
-				if(!extracteur.process(true))
+				std::string strFileIn((*it).toStdString());
+				std::string strFileOut("G:/test.XtractC");
+				extracteur.setup(strFileIn, strFileOut);
+				if (!extracteur.process(true))
 					QMessageBox::information(this, QString("Active File"), QString("L'operation n'a pas fonctionner"));
-
 			}
 			catch (XtractC::ParamException const & exception)
 			{
