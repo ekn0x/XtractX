@@ -42,22 +42,20 @@ QGroupBox* QOptions::buildFolderBox()
 	// source output folder
 	QRadioButton * source = new QRadioButton; // utiliser le dossier de sortie des fichiers
 	source->setChecked(true); // option par defaut
-	QLabel * sourceFolder = new QLabel(QString("Utiliser le repertoire source"));
-	sourceFolder->setFixedWidth(200);
+	source->setText("Utiliser le repertoire source");
+	source->setFixedWidth(200);
 	QHBoxLayout * line1 = new QHBoxLayout;
 	line1->addWidget(source);
-	line1->addWidget(sourceFolder);
 	line1->addStretch();
 
 	// selected output folder
 	QRadioButton * select = new QRadioButton; // choisir le dossier de sortie
-	QLabel * selectedFolder = new QLabel(QString("Specifier un repertoire de sortie"));
-	selectedFolder->setFixedWidth(200);
+	select->setText("Specifier un repertoire de sortie");
+	select->setFixedWidth(200);
 	mSelectFolder = new QPushButton(QString("Selectionner"));
 	mSelectFolder->setEnabled(false);
 	QHBoxLayout * line2 = new QHBoxLayout;
 	line2->addWidget(select);
-	line2->addWidget(selectedFolder);
 	line2->addStretch();
 	line2->addWidget(mSelectFolder);
 
@@ -90,19 +88,17 @@ QGroupBox* QOptions::buildFileBox()
 	// source output folder
 	QRadioButton * origFileName = new QRadioButton;
 	origFileName->setChecked(true); // option par defaut
-	QLabel * srcFileName = new QLabel(QString("Utiliser le meme nom de fichier"));
-	srcFileName->setFixedWidth(200);
+	origFileName->setText("Utiliser le meme nom de fichier");
+	origFileName->setFixedWidth(200);
 	QHBoxLayout * line1 = new QHBoxLayout;
 	line1->addWidget(origFileName);
-	line1->addWidget(srcFileName);
 	line1->addStretch();
 
 	QRadioButton * select = new QRadioButton; // choisir le nom de sortie
-	QLabel * selectedFileName = new QLabel(QString("Utiliser un nom de fichier avec numerotation automatique"));
-	selectedFileName->setFixedWidth(300);
+	select->setText("Utiliser un nom de fichier avec numerotation automatique");
+	select->setFixedWidth(300);
 	QHBoxLayout * line2 = new QHBoxLayout;
 	line2->addWidget(select);
-	line2->addWidget(selectedFileName);
 	line2->addStretch();
 
 	QLabel * labelPrefix = new QLabel(QString("Prefixe du nom de fichier"));
@@ -148,21 +144,19 @@ QGroupBox* QOptions::buildExtBox()
 
 	QRadioButton * extXtractC = new QRadioButton;
 	extXtractC->setChecked(true);
-	QLabel * labelExtXtractC = new QLabel("Utiliser l'extension XtractC");
-	labelExtXtractC->setFixedWidth(200);
+	extXtractC->setText("Utiliser l'extension XtractC");
+	extXtractC->setFixedWidth(200);
 	QHBoxLayout * line1 = new QHBoxLayout;
 	line1->addWidget(extXtractC);
-	line1->addWidget(labelExtXtractC);
 	line1->addStretch();
 
 	QRadioButton * extCustom = new QRadioButton;
-	QLabel * labelExtCustom = new QLabel("Specifier l'extension");
-	labelExtCustom->setFixedWidth(200);
+	extCustom->setText("Specifier l'extension");
+	extCustom->setFixedWidth(200);
 	QLineEdit * extension = new QLineEdit;
 	extension->setFixedWidth(200);
 	QHBoxLayout * line2 = new QHBoxLayout;
 	line2->addWidget(extCustom);
-	line2->addWidget(labelExtCustom);
 	line2->addStretch();
 	line2->addWidget(extension);
 
@@ -180,13 +174,12 @@ QGroupBox* QOptions::buildExtBox()
 QHBoxLayout * QOptions::buildOptFooter()
 {
 	QCheckBox * statistique = new QCheckBox;
-	QLabel * labelStatistique = new QLabel("Inclure les statistiques");
+	statistique->setText("Inclure les statistiques");
 	QPushButton * generer = new QPushButton(QString("Generer"));
 
 	QHBoxLayout * subLayout = new QHBoxLayout;
 	subLayout->addStretch();
 	subLayout->addWidget(statistique);
-	subLayout->addWidget(labelStatistique);
 	subLayout->addWidget(generer);
 	
 	connect(generer, &QPushButton::released, this, &QOptions::PB_Generer);

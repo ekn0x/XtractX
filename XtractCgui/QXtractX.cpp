@@ -27,7 +27,7 @@ QXtractX::QXtractX(QWidget * parent)
 	
 	mXtractViews->addTab(mCommentViewer, "Consulter un fichier source et ses commentaires");
 	mXtractViews->addTab(mMultipleFile, "Generer des fichiers de commentaires");
-	mXtractViews->addTab(new QSupplement, "Suppléments");
+	mXtractViews->addTab(new QSupplement, "Supplements");
 
 	connect(mDirSelect, &QDirectorySelector::fileSelected, mCommentViewer, &QCppCommentViewer::setFile);
 
